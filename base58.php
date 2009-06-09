@@ -26,8 +26,3 @@ class base58
 	}
 }
 
-
-echo "http://flic.kr/p/" . base58::encode(3392387861) . "\n";
-
-echo "3392387861 = " . base58::decode(base58::encode(3392387861)) . "\n";
-
