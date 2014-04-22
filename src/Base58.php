@@ -1,6 +1,6 @@
 <?php
 
-class base58
+class Base58
 {
 	static public $alphabet = "123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ";
 
