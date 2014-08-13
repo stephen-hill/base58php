@@ -2,7 +2,7 @@
     "name": "stephen-hill/base58",
     "description": "Base58 Encoding and Decoding Library",
     "require-dev": {
-        "phpunit/phpunit-mock-objects": "4.*"
+        "phpunit/phpunit": "4.*"
     },
     "license": "MIT",
     "authors": [
