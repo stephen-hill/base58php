@@ -7,6 +7,7 @@ use InvalidArgumentException;
 class Base58
 {
 	protected $alphabet;
+	protected $base;
 
 	public function __construct($alphabet = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz')
 	{
@@ -21,73 +22,7 @@ class Base58
 		}
 
 		$this->alphabet = $alphabet;
-	}
-
-	/**
-	 * Convert a string (aka byte array) to an arbitrary-precision decimal
-	 *
-	 * @param string $string String to be converted
-	 * @return string Arbitrary-precision decimal
-	 */
-	public function stringToDecimal($string)
-	{
-		if (is_string($string) === false)
-		{
-			throw new InvalidArgumentException('Argument $string must be of type string.');
-		}
-
-		$characters = unpack('C*', $string);
-		$length = count($characters);
-		$decimal = '0';
-
-		for ($i = 1; $i <= $length; $i++)
-		{
-			$power = bcpow(2, ($length - $i) * 8);
-			$shifted = bcmul($characters[$i], $power);
-			$decimal = bcadd($decimal, $shifted);
-		}
-
-		return (string)$decimal;
-	}
-
-	public function encodeDecimal($decimal)
-	{
-		if (is_string($decimal) === false)
-		{
-			throw new InvalidArgumentException('Argument $decimal must be of type string.');
-		}
-
-		$base = strlen($this->alphabet);
-		$output = '';
-
-		$leadingZeroCount = 0;
-		foreach (str_split($decimal) as $numeral)
-		{
-			if ($numeral === '0')
-			{
-				$leadingZeroCount++;
-				continue;
-			}
-
-			break;
-		}
-
-		while($decimal >= $base)
-		{
-			$div = bcdiv($decimal, $base);
-			$mod = bcmod($decimal, $base);
-			$output .= $this->alphabet[$mod];
-			$decimal = $div;
-		}
-
-		if ($decimal > 0)
-		{
-			$output .= $this->alphabet[$decimal];
-		}
-
-		$output = str_repeat($this->alphabet[0], $leadingZeroCount) . $output;
-
-		return strrev($output);
+		$this->base = strlen($alphabet);
 	}
 
 	/**
@@ -106,18 +41,55 @@ class Base58
 			return '';
 		}
 
-		$decimal = $this->stringToDecimal($string);
-		$encoded = $this->encodeDecimal($decimal);
+		// Strings in PHP are essentially 8-bit byte arrays
+		// so lets convert the string into a PHP array
+		$bytes = unpack('C*', $string);
 
-		return (string)$encoded;
+		// Now we need to convert the byte array into an arbitrary-precision decimal.
+		// This for loop essentially performs a base 8 to base 10 converion
+		// http://en.wikipedia.org/wiki/Positional_notation#Base_conversion
+		$decimal = '0';
+		for ($i = 1, $l = strlen($string); $i <= $l; $i++)
+		{
+			$power = bcpow(2, ($l - $i) * 8);
+			$shifted = bcmul($bytes[$i], $power);
+			$decimal = bcadd($decimal, $shifted);
+		}
+
+		// This loop now performs base 10 to base 58 conversion
+		$output = '';
+		while($decimal >= $this->base)
+		{
+			$div = bcdiv($decimal, $this->base);
+			$mod = bcmod($decimal, $this->base);
+			$output .= $this->alphabet[$mod];
+			$decimal = $div;
+		}
+
+		if ($decimal > 0)
+		{
+			$output .= $this->alphabet[$decimal];
+		}
+
+		$output = strrev($output);
+
+		// Now we need to handle leading zeros
+		foreach ($bytes as $byte)
+		{
+			if ($byte === 0)
+			{
+				$output = $this->alphabet[0] . $output;
+				continue;
+			}
+
+			break;
+		}
+
+		return (string)$output;
 	}
 
-	// public function decode($base58) {
-	// 	$int_val = 0;
-	// 	for($i=strlen($base58)-1,$j=1,$base=strlen(self::$alphabet);$i>=0;$i--,$j*=$base) {
-	// 		$int_val += $j * strpos(self::$alphabet, $base58{$i});
-	// 	}
-	// 	return $int_val;
-	// }
+	public function decode($base58)
+	{
+		return null;
+	}
 }
-
