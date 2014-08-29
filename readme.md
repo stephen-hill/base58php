@@ -40,3 +40,8 @@ The MIT License (MIT). Please see License File for more information.
 ## Credits
 
 This library was forked from [Jeremy Johnstone's](https://github.com/jsjohnst) Base58 methods on Gist https://gist.github.com/jsjohnst/126883.
+
+Some of the unit tests were based on the following:
+
+- https://code.google.com/p/bitcoinj/source/browse/core/src/test/java/com/google/bitcoin/core/Base58Test.java
+- https://github.com/bitcoinjs/bitcoinjs-lib/blob/master/test/fixtures/base58.json
