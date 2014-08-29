@@ -1,6 +1,6 @@
 {
-    "name": "stephen-hill/base58",
-    "description": "Base58 Encoding and Decoding Library",
+    "name": "stephenhill/base58",
+    "description": "Base58 Encoding and Decoding Library for PHP",
     "require-dev": {
         "phpunit/phpunit": "4.*"
     },
@@ -11,9 +11,6 @@
             "email": "stephen@gatekiller.co.uk"
         }
     ],
-    "require": {
-
-    },
     "config": {
         "bin-dir": "bin"
     },
