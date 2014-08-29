@@ -10,8 +10,4 @@ php:
   - 5.6
   - hhvm
 
-matrix:
-  allow_failures:
-    - php: hhvm
-
 script: bin/phpunit
