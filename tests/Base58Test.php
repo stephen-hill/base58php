@@ -38,4 +38,17 @@ class Base58Tests extends PHPUnit_Framework_TestCase
 			$this->assertSame($encoded, $base58->encode($string), "Testing {$string} encodes to {$encoded}.");
 		}
 	}
+
+	public function testDecode()
+	{
+		$base58 = new Base58();
+
+		foreach ($this->tests as $encoded => $string)
+		{
+			$string = (string)$string;
+			$encoded = (string)$encoded;
+
+			$this->assertSame($string, $base58->decode($encoded), "Testing {$encoded} decodes to {$string}.");
+		}
+	}
 }
