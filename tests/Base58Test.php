@@ -87,4 +87,14 @@ class Base58Tests extends PHPUnit_Framework_TestCase
         $base58 = new Base58();
         $base58->decode(intval(123));
     }
+
+    /**
+     * @expectedException        InvalidArgumentException
+     * @expectedExceptionMessage Argument $base58 contains invalid characters.
+     */
+    public function testInvalidBase58()
+    {
+        $base58 = new Base58();
+        $base58->decode("This isn't valid base58");
+    }
 }

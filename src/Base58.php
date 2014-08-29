@@ -98,6 +98,14 @@ class Base58
 
         $indexes = array_flip(str_split($this->alphabet));
         $chars = str_split($base58);
+
+        // Check for invalid characters in the supplied base58 string
+        foreach ($chars as $char) {
+            if (isset($indexes[$char]) === false){
+                throw new InvalidArgumentException('Argument $base58 contains invalid characters.');
+            }
+        }
+
         $decimal = $indexes[$chars[0]];
 
         for ($i = 1; $l = count($chars), $i < $l; $i++) {
