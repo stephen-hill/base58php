@@ -49,4 +49,42 @@ class Base58Tests extends PHPUnit_Framework_TestCase
             $this->assertSame($string, $base58->decode($encoded), "Testing {$encoded} decodes to {$string}.");
         }
     }
+
+    /**
+     * @expectedException        InvalidArgumentException
+     * @expectedExceptionMessage Argument $alphabet must be a string.
+     */
+    public function testConstructorTypeException()
+    {
+        new Base58(intval(123));
+    }
+
+    /**
+     * @expectedException        InvalidArgumentException
+     * @expectedExceptionMessage Argument $alphabet must contain 58 characters.
+     */
+    public function testConstructorLengthException()
+    {
+        new Base58('');
+    }
+
+    /**
+     * @expectedException        InvalidArgumentException
+     * @expectedExceptionMessage Argument $string must be a string.
+     */
+    public function testEncodeTypeException()
+    {
+        $base58 = new Base58();
+        $base58->encode(intval(123));
+    }
+
+    /**
+     * @expectedException        InvalidArgumentException
+     * @expectedExceptionMessage Argument $base58 must be a string.
+     */
+    public function testDecodeTypeException()
+    {
+        $base58 = new Base58();
+        $base58->decode(intval(123));
+    }
 }
