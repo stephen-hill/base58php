@@ -1,4 +1,4 @@
 <?php
 
-require __DIR__ . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
-date_default_timezone_set("Europe/London");
+require_once 'vendor/autoload.php';
+date_default_timezone_set("UTC");
