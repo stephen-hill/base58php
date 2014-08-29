@@ -39,17 +39,16 @@ class Base58
 
         // Strings in PHP are essentially 8-bit byte arrays
         // so lets convert the string into a PHP array
-        $bytes = unpack('C*', $string);
+        $bytes = array_values(unpack('C*', $string));
 
         // Now we need to convert the byte array into an arbitrary-precision decimal.
-        // This loop concatinates the bytes together and then performs a
-        // base2 to base10 conversion.
+        // We basically do this by performing a base256 to base10 conversion.
         // http://en.wikipedia.org/wiki/Positional_notation#Base_conversion
-        $decimal = '0';
-        for ($i = 1, $l = strlen($string); $i <= $l; $i++) {
-            $power = bcpow(2, ($l - $i) * 8);
-            $shifted = bcmul($bytes[$i], $power);
-            $decimal = bcadd($decimal, $shifted);
+        $decimal = $bytes[0];
+
+        for ($i = 1; $l = count($bytes), $i < $l; $i++) {
+            $decimal = bcmul($decimal, 256);
+            $decimal = bcadd($decimal, $bytes[$i]);
         }
 
         // This loop now performs base 10 to base 58 conversion
@@ -101,7 +100,7 @@ class Base58
 
         // Check for invalid characters in the supplied base58 string
         foreach ($chars as $char) {
-            if (isset($indexes[$char]) === false){
+            if (isset($indexes[$char]) === false) {
                 throw new InvalidArgumentException('Argument $base58 contains invalid characters.');
             }
         }
