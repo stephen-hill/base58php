@@ -10,6 +10,18 @@ This library requires the following:
 - PHP => 5.3
 - BC Math Extension
 
+## Installation
+
+I recommend you install this library via Composer.
+
+```json
+{
+    "require": {
+        "stephenhill/base58": "dev-master"
+    }
+}
+```
+
 ## Usage
 
 ```php
