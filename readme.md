@@ -21,6 +21,14 @@ $base58->encode('Hello World');
 $base58->decode('JxF12TrwUP45BMd');
 ```
 
+## Testing
+
+This library is tested using PHPUnit.
+
+```bash
+$ bin/phpunit
+```
+
 ## Contributing
 
 I welcome everyone to contribute to this library.
