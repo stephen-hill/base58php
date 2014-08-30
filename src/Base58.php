@@ -32,10 +32,12 @@ class Base58
      */
     public function __construct($alphabet = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz')
     {
+        // Type validation
         if (is_string($alphabet) === false) {
             throw new InvalidArgumentException('Argument $alphabet must be a string.');
         }
 
+        // The alphabet must contain 58 characters
         if (strlen($alphabet) !== 58) {
             throw new InvalidArgumentException('Argument $alphabet must contain 58 characters.');
         }
