@@ -17,7 +17,7 @@ I recommend you install this library via Composer.
 ```json
 {
     "require": {
-        "stephenhill/base58": "dev-master"
+        "stephenhill/base58": "~1.0"
     }
 }
 ```
