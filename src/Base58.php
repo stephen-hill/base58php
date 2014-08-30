@@ -4,11 +4,32 @@ namespace StephenHill;
 
 use InvalidArgumentException;
 
+/**
+ * @package      StephenHill\Base58
+ * @author       Stephen Hill <stephen@gatekiller.co.uk>
+ * @copyright    2014 Stephen Hill <stephen@gatekiller.co.uk>
+ * @license      http://www.opensource.org/licenses/MIT    The MIT License
+ * @link         https://github.com/stephen-hill/base58php
+ * @since        Release v1.0.0
+ */
 class Base58
 {
+    /**
+     * @var string
+     */
     protected $alphabet;
+
+    /**
+     * @var int
+     */
     protected $base;
 
+    /**
+     * Constructor
+     *
+     * @param string $alphabet
+     * @since Release v1.0.0
+     */
     public function __construct($alphabet = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz')
     {
         if (is_string($alphabet) === false) {
@@ -24,15 +45,20 @@ class Base58
     }
 
     /**
+     * Encode a string into base58.
+     *
      * @param  string $string The string you wish to encode.
+     * @since Release v1.0.0
      * @return string The Base58 encoded string.
      */
     public function encode($string)
     {
+        // Type validation
         if (is_string($string) === false) {
             throw new InvalidArgumentException('Argument $string must be a string.');
         }
 
+        // If the string is empty, then the encoded string is obviously empty
         if (strlen($string) === 0) {
             return '';
         }
@@ -41,9 +67,8 @@ class Base58
         // so lets convert the string into a PHP array
         $bytes = array_values(unpack('C*', $string));
 
-        // Now we need to convert the byte array into an arbitrary-precision decimal.
-        // We basically do this by performing a base256 to base10 conversion.
-        // http://en.wikipedia.org/wiki/Positional_notation#Base_conversion
+        // Now we need to convert the byte array into an arbitrary-precision decimal
+        // We basically do this by performing a base256 to base10 conversion
         $decimal = $bytes[0];
 
         for ($i = 1; $l = count($bytes), $i < $l; $i++) {
@@ -69,7 +94,7 @@ class Base58
         // Now we need to reverse the encoded data
         $output = strrev($output);
 
-        // Now we need to append leading zeros
+        // Now we need to add leading zeros
         foreach ($bytes as $byte) {
             if ($byte === 0) {
                 $output = $this->alphabet[0] . $output;
@@ -82,15 +107,20 @@ class Base58
     }
 
     /**
+     * Decode base58 into a PHP string.
+     *
      * @param  string $base58 The base58 encoded string.
+     * @since Release v1.0.0
      * @return string Returns the decoded string.
      */
     public function decode($base58)
     {
+        // Type Validation
         if (is_string($base58) === false) {
             throw new InvalidArgumentException('Argument $base58 must be a string.');
         }
 
+        // If the string is empty, then the decoded string is obviously empty
         if (strlen($base58) === 0) {
             return '';
         }
@@ -105,6 +135,7 @@ class Base58
             }
         }
 
+        // Convert from base58 to base10
         $decimal = $indexes[$chars[0]];
 
         for ($i = 1; $l = count($chars), $i < $l; $i++) {
@@ -112,6 +143,7 @@ class Base58
             $decimal = bcadd($decimal, $indexes[$chars[$i]]);
         }
 
+        // Convert from base10 to base256 (8-bit byte array)
         $output = '';
         while ($decimal > 0) {
             $byte = bcmod($decimal, 256);
@@ -119,6 +151,7 @@ class Base58
             $decimal = bcdiv($decimal, 256);
         }
 
+        // Now we need to add leading zeros
         foreach ($chars as $char) {
             if ($indexes[$char] === 0) {
                 $output = "\x00" . $output;
