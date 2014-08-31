@@ -43,7 +43,7 @@ $ bin/phpunit
 
 ## Contributing
 
-I welcome everyone to contribute to this library.
+I welcome everyone to contribute to this library. Please see the Contributing document for details.
 
 ## License
 
