@@ -2,10 +2,22 @@
 
 [![Build Status](https://travis-ci.org/stephen-hill/base58php.png)](https://travis-ci.org/stephen-hill/base58php)
 [![GitHub version](https://badge.fury.io/gh/stephen-hill%2Fbase58php.png)](http://badge.fury.io/gh/stephen-hill%2Fbase58php)
+[![Flattr this](//api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=stephen-hill&url=https%3A%2F%2Fgithub.com%2Fstephen-hill%2Fbase58php)
+
+## Background
+
+I wanted a replacment for Base64 encoded strings and the [Base58 encoding used by Bitcoin](https://en.bitcoin.it/wiki/Base58Check_encoding) looked ideal. I looked around for an existing PHP library which would directly convert a string into Base58 but I couldn't find one, or atleast one that worked correctly and was also well tested.
+
+So I decided to create a library with the following goals:
+
+- Encode/Decode PHP Strings
+- Simple and easy to use
+- Fully Tested
+- Available via Composer
 
 ## Requirements
 
-This library requires the following:
+This library has the following requirements:
 
 - PHP => 5.3
 - BC Math Extension
@@ -47,7 +59,7 @@ I welcome everyone to contribute to this library.
 
 ## License
 
-The MIT License (MIT). Please see License File for more information.
+This library is license under the MIT License (MIT). Please see License File for more information.
 
 ## Credits
 
