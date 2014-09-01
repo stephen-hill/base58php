@@ -16,6 +16,10 @@ So I decided to create a library with the following goals:
 - Fully Tested
 - Available via Composer
 
+## What is Base58?
+
+
+
 ## Requirements
 
 This library has the following requirements:
