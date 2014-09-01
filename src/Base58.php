@@ -73,7 +73,7 @@ class Base58
         // We basically do this by performing a base256 to base10 conversion
         $decimal = $bytes[0];
 
-        for ($i = 1; $l = count($bytes), $i < $l; $i++) {
+        for ($i = 1, $l = count($bytes); $i < $l; $i++) {
             $decimal = bcmul($decimal, 256);
             $decimal = bcadd($decimal, $bytes[$i]);
         }
@@ -140,7 +140,7 @@ class Base58
         // Convert from base58 to base10
         $decimal = $indexes[$chars[0]];
 
-        for ($i = 1; $l = count($chars), $i < $l; $i++) {
+        for ($i = 1, $l = count($chars); $i < $l; $i++) {
             $decimal = bcmul($decimal, 58);
             $decimal = bcadd($decimal, $indexes[$chars[$i]]);
         }
