@@ -2,7 +2,8 @@
     "name": "stephenhill/base58",
     "description": "Base58 Encoding and Decoding Library for PHP",
     "require-dev": {
-        "phpunit/phpunit": "4.*"
+        "phpunit/phpunit": "4.*",
+        "athletic/athletic": "~0.1"
     },
     "license": "MIT",
     "authors": [
@@ -16,7 +17,8 @@
     },
     "autoload": {
         "psr-4": {
-            "StephenHill\\": "src/"
+            "StephenHill\\": "src/",
+            "StephenHill\\Benchmarks\\": "benchmarks/"
         }
     }
 }

@@ -54,6 +54,15 @@ This library is tested using PHPUnit.
 $ bin/phpunit
 ```
 
+## Benchmarking
+
+You can benchmark this library using [Athletic](https://github.com/polyfractal/athletic).
+The benchmarking suite also benchmarks PHP's built-in Base64 and Base16 encoding for comparision.
+
+```bash
+$ bin/athletic -p benchmarks
+```
+
 ## Contributing
 
 I welcome everyone to contribute to this library. Please see the Contributing document for details.
