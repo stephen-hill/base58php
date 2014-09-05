@@ -1,38 +1,41 @@
 <?php
 
 use StephenHill\Base58;
+use StephenHill\BCMathService;
+use StephenHill\GMPService;
 
 class Base58Tests extends PHPUnit_Framework_TestCase
 {
     /**
      * @dataProvider encodingsProvider
      */
-    public function testEncode($string, $encoded)
+    public function testEncode($string, $encoded, $instance)
     {
         $string = (string)$string;
         $encoded = (string)$encoded;
 
-        $base58 = new Base58();
-
-        $this->assertSame($encoded, $base58->encode($string));
+        $this->assertSame($encoded, $instance->encode($string));
     }
 
     /**
      * @dataProvider encodingsProvider
      */
-    public function testDecode($string, $encoded)
+    public function testDecode($string, $encoded, $instance)
     {
-        $base58 = new Base58();
-
         $string = (string) $string;
         $encoded = (string) $encoded;
 
-        $this->assertSame($string, $base58->decode($encoded));
+        $this->assertSame($string, $instance->decode($encoded));
     }
 
     public function encodingsProvider()
     {
-        return array(
+        $instances = array(
+            new Base58(null, new BCMathService()),
+            new Base58(null, new GMPService())
+        );
+
+        $tests = array(
             array('', ''),
             array('1', 'r'),
             array('a', '2g'),
@@ -48,6 +51,19 @@ class Base58Tests extends PHPUnit_Framework_TestCase
             array("\x00", '1'),
             array("\x00\x00", '11')
         );
+
+        $return = array();
+
+        foreach ($tests as $test)
+        {
+            foreach($instances as $instance)
+            {
+                $test[] = $instance;
+                $return[] = $test;
+            }
+        }
+
+        return $return;
     }
 
     /**
