@@ -47,7 +47,18 @@ class Base58
         // Provide a default service if one isn't injected
         if ($service === null)
         {
-            $service = new BCMathService($alphabet);
+            // Check for GMP support first
+            if (function_exists('\gmp_init') === true) {
+                $service = new GMPService($alphabet);
+            }
+
+            if (function_exists('\bcmul') === true) {
+                $service = new BCMathService($alphabet);
+            }
+
+            if (is_null($service) === true) {
+                throw new \Exception('Please install the BC Math or GMP extension.');
+            }
         }
 
         $this->service = $service;
