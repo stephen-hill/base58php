@@ -81,9 +81,18 @@ This library is tested using PHPUnit.
 $ bin/phpunit
 ```
 
-Example output.
+## Benchmarking
+
+You can benchmark this library using [Athletic](https://github.com/polyfractal/athletic).
+The benchmarking suite also benchmarks PHP's built-in Base64 and Base16 encoding for comparision.
 
 ```bash
+$ bin/athletic -p benchmarks
+```
+
+Example output.
+
+```
 StephenHill\Benchmarks\Base16Event
     Method Name    Iterations    Average Time      Ops/second
     ------------  ------------  --------------    -------------
@@ -110,15 +119,6 @@ StephenHill\Benchmarks\Base64Event
     ------------  ------------  --------------    -------------
     encodeBase64: [10,000    ] [0.0000024944305] [400,893.10292]
     decodeBase64: [10,000    ] [0.0000029747725] [336,160.16542]
-```
-
-## Benchmarking
-
-You can benchmark this library using [Athletic](https://github.com/polyfractal/athletic).
-The benchmarking suite also benchmarks PHP's built-in Base64 and Base16 encoding for comparision.
-
-```bash
-$ bin/athletic -p benchmarks
 ```
 
 ## Contributing
