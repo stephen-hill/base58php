@@ -8,14 +8,22 @@ class BCMathService implements ServiceInterface
 {
     /**
      * @var string
+     * @since v1.1.0
      */
     protected $alphabet;
 
     /**
      * @var int
+     * @since v1.1.0
      */
     protected $base;
 
+    /**
+     * Constructor
+     *
+     * @param string $alphabet optional
+     * @since v1.1.0
+     */
     public function __construct($alphabet = null)
     {
         // Handle null alphabet

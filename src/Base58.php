@@ -16,14 +16,17 @@ class Base58
 {
     /**
      * @var StephenHill\ServiceInterface;
+     * @since v1.1.0
      */
     protected $service;
 
     /**
      * Constructor
      *
-     * @param string $alphabet
-     * @since Release v1.0.0
+     * @param string           $alphabet optional
+     * @param ServiceInterface $service  optional
+     * @since v1.0.0
+     * @since v1.1.0 Added the optional $service argument.
      */
     public function __construct(
         $alphabet = null,
@@ -45,8 +48,7 @@ class Base58
         }
 
         // Provide a default service if one isn't injected
-        if ($service === null)
-        {
+        if ($service === null) {
             // Check for GMP support first
             if (function_exists('\gmp_init') === true) {
                 $service = new GMPService($alphabet);
@@ -68,7 +70,7 @@ class Base58
      * Encode a string into base58.
      *
      * @param  string $string The string you wish to encode.
-     * @since Release v1.0.0
+     * @since v1.0.0
      * @return string The Base58 encoded string.
      */
     public function encode($string)
@@ -80,7 +82,7 @@ class Base58
      * Decode base58 into a PHP string.
      *
      * @param  string $base58 The base58 encoded string.
-     * @since Release v1.0.0
+     * @since v1.0.0
      * @return string Returns the decoded string.
      */
     public function decode($base58)
