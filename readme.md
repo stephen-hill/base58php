@@ -35,7 +35,7 @@ I recommend you install this library via Composer.
 }
 ```
 
-## Usage
+## Basic Usage
 
 ```php
 require_once('vendor/autoload.php');
@@ -44,6 +44,33 @@ $base58 = new StephenHill\Base58();
 
 $base58->encode('Hello World');
 $base58->decode('JxF12TrwUP45BMd');
+```
+
+## Advanced Usage
+
+By default this library chooses the encoding service provider to use, either GMPService or BCMathService (in that order).
+If you want to specify one of the included services or your own, you can inject it into the constructor.
+
+```php
+require_once('vendor/autoload.php');
+
+$gmp = new StephenHill\GMPService();
+$base58 = new StephenHill\Base58(null, $gmp);
+
+$base58->encode('Hello World');
+$base58->decode('JxF12TrwUP45BMd');
+```
+
+Also by default, this library uses Bitcoin's Base58 alphabet. If you want to use another variant, you can do this in the constructor.
+
+```php
+require_once('vendor/autoload.php');
+
+// Flickr's Base58 Alphabet
+$base58 = new StephenHill\Base58('123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ');
+
+$base58->encode('Hello World');
+$base58->decode('iXf12sRWto45bmC');
 ```
 
 ## Testing
