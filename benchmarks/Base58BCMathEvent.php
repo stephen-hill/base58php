@@ -4,14 +4,15 @@ namespace StephenHill\Benchmarks;
 
 use Athletic\AthleticEvent;
 use StephenHill\Base58;
+use StephenHill\BCMathService;
 
-class Base58Event extends AthleticEvent
+class Base58BCMathEvent extends AthleticEvent
 {
 	protected $base58;
 
 	public function setUp()
 	{
-		$this->base58 = new Base58();
+		$this->base58 = new Base58(null, new BCMathService());
 	}
 
 	/**

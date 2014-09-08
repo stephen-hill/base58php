@@ -35,7 +35,7 @@ I recommend you install this library via Composer.
 }
 ```
 
-## Usage
+## Basic Usage
 
 ```php
 require_once('vendor/autoload.php');
@@ -44,6 +44,33 @@ $base58 = new StephenHill\Base58();
 
 $base58->encode('Hello World');
 $base58->decode('JxF12TrwUP45BMd');
+```
+
+## Advanced Usage
+
+By default this library chooses the encoding service provider to use, either GMPService or BCMathService (in that order).
+If you want to specify one of the included services or your own, you can inject it into the constructor.
+
+```php
+require_once('vendor/autoload.php');
+
+$gmp = new StephenHill\GMPService();
+$base58 = new StephenHill\Base58(null, $gmp);
+
+$base58->encode('Hello World');
+$base58->decode('JxF12TrwUP45BMd');
+```
+
+Also by default, this library uses Bitcoin's Base58 alphabet. If you want to use another variant, you can do this in the constructor.
+
+```php
+require_once('vendor/autoload.php');
+
+// Flickr's Base58 Alphabet
+$base58 = new StephenHill\Base58('123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ');
+
+$base58->encode('Hello World');
+$base58->decode('iXf12sRWto45bmC');
 ```
 
 ## Testing
@@ -61,6 +88,37 @@ The benchmarking suite also benchmarks PHP's built-in Base64 and Base16 encoding
 
 ```bash
 $ bin/athletic -p benchmarks
+```
+
+Example output.
+
+```
+StephenHill\Benchmarks\Base16Event
+    Method Name    Iterations    Average Time      Ops/second
+    ------------  ------------  --------------    -------------
+    encodeBase16: [10,000    ] [0.0000019209862] [520,565.95343]
+    decodeBase16: [10,000    ] [0.0000017486095] [571,882.95929]
+
+
+StephenHill\Benchmarks\Base58BCMathEvent
+    Method Name    Iterations    Average Time      Ops/second
+    ------------  ------------  --------------    -------------
+    encodeBase58: [10,000    ] [0.0002959881783] [3,378.51331]
+    decodeBase58: [10,000    ] [0.0003385210276] [2,954.02625]
+
+
+StephenHill\Benchmarks\Base58GMPEvent
+    Method Name    Iterations    Average Time      Ops/second
+    ------------  ------------  --------------    -------------
+    encodeBase58: [10,000    ] [0.0002513268709] [3,978.88215]
+    decodeBase58: [10,000    ] [0.0003138262749] [3,186.47634]
+
+
+StephenHill\Benchmarks\Base64Event
+    Method Name    Iterations    Average Time      Ops/second
+    ------------  ------------  --------------    -------------
+    encodeBase64: [10,000    ] [0.0000024944305] [400,893.10292]
+    decodeBase64: [10,000    ] [0.0000029747725] [336,160.16542]
 ```
 
 ## Contributing
