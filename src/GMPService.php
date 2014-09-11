@@ -63,10 +63,6 @@ class GMPService implements ServiceInterface
             return '';
         }
 
-        // Strings in PHP are essentially 8-bit byte arrays
-        // so lets convert the string into a PHP array
-        $bytes = array_values(unpack('C*', $string));
-
         // Now we need to convert the byte array into an arbitrary-precision decimal
         // We basically do this by performing a base256 to base10 conversion
         $hex = unpack('H*', $string);
@@ -90,8 +86,9 @@ class GMPService implements ServiceInterface
         $output = strrev($output);
 
         // Now we need to add leading zeros
+        $bytes = str_split($string);
         foreach ($bytes as $byte) {
-            if ($byte === 0) {
+            if ($byte === "\x00") {
                 $output = $this->alphabet[0] . $output;
                 continue;
             }
