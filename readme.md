@@ -96,29 +96,29 @@ Example output.
 StephenHill\Benchmarks\Base16Event
     Method Name    Iterations    Average Time      Ops/second
     ------------  ------------  --------------    -------------
-    encodeBase16: [10,000    ] [0.0000019209862] [520,565.95343]
-    decodeBase16: [10,000    ] [0.0000017486095] [571,882.95929]
+    encodeBase16: [10,000    ] [0.0000010839939] [922,514.40637]
+    decodeBase16: [10,000    ] [0.0000011516809] [868,296.03561]
 
 
 StephenHill\Benchmarks\Base58BCMathEvent
     Method Name    Iterations    Average Time      Ops/second
     ------------  ------------  --------------    -------------
-    encodeBase58: [10,000    ] [0.0002959881783] [3,378.51331]
-    decodeBase58: [10,000    ] [0.0003385210276] [2,954.02625]
+    encodeBase58: [10,000    ] [0.0001500048161] [6,666.45263]
+    decodeBase58: [10,000    ] [0.0001741812706] [5,741.14540]
 
 
 StephenHill\Benchmarks\Base58GMPEvent
     Method Name    Iterations    Average Time      Ops/second
     ------------  ------------  --------------    -------------
-    encodeBase58: [10,000    ] [0.0002513268709] [3,978.88215]
-    decodeBase58: [10,000    ] [0.0003138262749] [3,186.47634]
+    encodeBase58: [10,000    ] [0.0001168665648] [8,556.76730]
+    decodeBase58: [10,000    ] [0.0001385705233] [7,216.54199]
 
 
 StephenHill\Benchmarks\Base64Event
     Method Name    Iterations    Average Time      Ops/second
     ------------  ------------  --------------    -------------
-    encodeBase64: [10,000    ] [0.0000024944305] [400,893.10292]
-    decodeBase64: [10,000    ] [0.0000029747725] [336,160.16542]
+    encodeBase64: [10,000    ] [0.0000009050369] [1,104,927.29189]
+    decodeBase64: [10,000    ] [0.0000009787321] [1,021,730.04312]
 ```
 
 ## Contributing
