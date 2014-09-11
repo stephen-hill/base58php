@@ -19,6 +19,6 @@ class Base16Event extends AthleticEvent
 	*/
 	public function decodeBase16()
 	{
-		hex2bin('48656c6c6f20576f726c64');
+		pack('H*', '48656c6c6f20576f726c64');
 	}
 }
