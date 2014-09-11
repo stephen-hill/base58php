@@ -69,7 +69,9 @@ class GMPService implements ServiceInterface
 
         // Now we need to convert the byte array into an arbitrary-precision decimal
         // We basically do this by performing a base256 to base10 conversion
-        $decimal = gmp_init(unpack('H*', $string)[1], 16);
+        $hex = unpack('H*', $string);
+        $hex = reset($hex);
+        $decimal = gmp_init($hex, 16);
 
         // This loop now performs base 10 to base 58 conversion
         // The remainder or modulo on each loop becomes a base 58 character
