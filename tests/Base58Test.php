@@ -11,8 +11,8 @@ class Base58Tests extends PHPUnit_Framework_TestCase
      */
     public function testEncode($string, $encoded, $instance)
     {
-        $string = (string)$string;
-        $encoded = (string)$encoded;
+        $string = (string) $string;
+        $encoded = (string) $encoded;
 
         $this->assertSame($encoded, $instance->encode($string));
     }
@@ -54,10 +54,8 @@ class Base58Tests extends PHPUnit_Framework_TestCase
 
         $return = array();
 
-        foreach ($tests as $test)
-        {
-            foreach($instances as $instance)
-            {
+        foreach ($tests as $test) {
+            foreach ($instances as $instance) {
                 $test[] = $instance;
                 $return[] = $test;
             }
