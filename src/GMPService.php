@@ -136,11 +136,7 @@ class GMPService implements ServiceInterface
         }
 
         // Convert from base10 to base256 (8-bit byte array)
-        $output = '';
-        while (gmp_cmp($decimal, 0) > 0) {
-            list($decimal, $byte) = gmp_div_qr($decimal, 256);
-            $output = ord(gmp_intval($byte)) . $output;
-        }
+        $output = unpack('H*', gmp_strval($decimal, 16));
 
         // Now we need to add leading zeros
         foreach ($chars as $char) {
