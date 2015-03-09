@@ -18,7 +18,7 @@ So I decided to create a library with the following goals:
 
 ## What is Base58?
 
-Base58 is an encoding scheme which allow representing a byte array using an alphabet containing 58 characters.
+Base58 is a [character encoding scheme](http://en.wikipedia.org/wiki/Character_encoding). Character encoding is the act of converting an input string into an output string, using a predefined algorithm and character set.
 
 ## Requirements
 
