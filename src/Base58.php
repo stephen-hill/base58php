@@ -53,12 +53,10 @@ class Base58
             if (function_exists('\gmp_init') === true) {
                 $service = new GMPService($alphabet);
             }
-
-            if (function_exists('\bcmul') === true) {
+            else if (function_exists('\bcmul') === true) {
                 $service = new BCMathService($alphabet);
             }
-
-            if (is_null($service) === true) {
+            else {
                 throw new \Exception('Please install the BC Math or GMP extension.');
             }
         }
