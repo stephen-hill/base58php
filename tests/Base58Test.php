@@ -54,8 +54,8 @@ class Base58Tests extends PHPUnit_Framework_TestCase
 
         $return = array();
 
-        foreach ($tests as $test) {
-            foreach ($instances as $instance) {
+        foreach ($instances as $instance) {
+            foreach ($tests as $test) {
                 $test[] = $instance;
                 $return[] = $test;
             }
