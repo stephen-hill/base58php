@@ -139,7 +139,7 @@ class GMPService implements ServiceInterface
         $output = '';
         while (gmp_cmp($decimal, 0) > 0) {
             list($decimal, $byte) = gmp_div_qr($decimal, 256);
-            $output = ord(gmp_intval($byte)) . $output;
+            $output = pack('C', gmp_intval($byte)) . $output;
         }
 
         // Now we need to add leading zeros
