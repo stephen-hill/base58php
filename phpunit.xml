@@ -10,7 +10,8 @@
 	processIsolation="true"
 	stopOnFailure="false"
 	syntaxCheck="true"
-	strict="true"
+	beStrictAboutTestsThatDoNotTestAnything="true"
+	beStrictAboutOutputDuringTests="true"
 	verbose="true"
 >
 	<testsuites>
