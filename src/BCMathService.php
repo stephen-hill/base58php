@@ -131,7 +131,7 @@ class BCMathService implements ServiceInterface
         // Check for invalid characters in the supplied base58 string
         foreach ($chars as $char) {
             if (isset($indexes[$char]) === false) {
-                throw new InvalidArgumentException('Argument $base58 contains invalid characters.');
+                throw new InvalidArgumentException('Argument $base58 contains invalid characters. ($char: "'.$char.'" | $base58: "'.$base58.'") ');
             }
         }
 
