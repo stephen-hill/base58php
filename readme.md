@@ -90,7 +90,7 @@ $ bin/phpunit
 ## Benchmarking
 
 You can benchmark this library using [Athletic](https://github.com/polyfractal/athletic).
-The benchmarking suite also benchmarks PHP's built-in Base64 and Base16 encoding for comparision.
+The benchmarking suite also benchmarks PHP's built-in Base64 and Base16 encoding for comparison.
 
 ```bash
 $ bin/athletic -p benchmarks
