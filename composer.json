@@ -19,6 +19,9 @@
         "psr-4": {
             "StephenHill\\": "src/",
             "StephenHill\\Benchmarks\\": "benchmarks/"
-        }
+        },
+        "files": [
+            "base58.php"
+        ]
     }
 }
