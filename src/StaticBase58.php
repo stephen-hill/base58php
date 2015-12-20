@@ -16,7 +16,7 @@ class StaticBase58
         return self::getInstance()->decode($string);
     }
 
-    protected static function getInstance()
+    public static function getInstance()
     {
         if (null === static::$instance)
         {
@@ -24,5 +24,10 @@ class StaticBase58
         }
 
         return static::$instance;
+    }
+    
+    public static function setInstance(Base58 $base58)
+    {
+        static::$instance = $base58;
     }
 }
