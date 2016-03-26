@@ -13,7 +13,7 @@ Version 1 will therefore be supported until the 11th September 2019.
 
 ## Background
 
-I wanted a replacment for Base64 encoded strings and the [Base58 encoding used by Bitcoin](https://en.bitcoin.it/wiki/Base58Check_encoding) looked ideal. I looked around for an existing PHP library which would directly convert a string into Base58 but I couldn't find one, or atleast one that worked correctly and was also well tested.
+I wanted a replacement for Base64 encoded strings and the [Base58 encoding used by Bitcoin](https://en.bitcoin.it/wiki/Base58Check_encoding) looked ideal. I looked around for an existing PHP library which would directly convert a string into Base58 but I couldn't find one, or at least one that worked correctly and was also well tested.
 
 So I decided to create a library with the following goals:
 
