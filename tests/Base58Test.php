@@ -111,4 +111,17 @@ class Base58Tests extends PHPUnit_Framework_TestCase
         $base58 = new Base58();
         $base58->decode("This isn't valid base58");
     }
+
+    public function testGetAndReplaceService()
+    {
+        $bcMath = new BCMathService();
+        $gmp = new GMPService();
+        $base58 = new Base58();
+
+        $base58->replaceService($bcMath);
+        $this->assertSame($bcMath, $base58->getService());
+
+        $base58->replaceService($gmp);
+        $this->assertSame($gmp, $base58->getService());
+    }
 }
