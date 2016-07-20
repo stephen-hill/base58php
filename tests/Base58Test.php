@@ -49,7 +49,8 @@ class Base58Tests extends PHPUnit_Framework_TestCase
             array('simply a long string', '2cFupjhnEsSn59qHXstmK2ffpLv2'),
             array("\x00\x61", '12g'),
             array("\x00", '1'),
-            array("\x00\x00", '11')
+            array("\x00\x00", '11'),
+            array('0248ac9d3652ccd8350412b83cb08509e7e4bd41', '3PtvAWwSMPe2DohNuCFYy76JhMV3rhxiSxQMbPBTtiPvYvneWu95XaY')
         );
 
         $return = array();

@@ -80,7 +80,7 @@ class BCMathService implements ServiceInterface
         // The remainder or modulo on each loop becomes a base 58 character
         $output = '';
         while ($decimal >= $this->base) {
-            $div = bcdiv($decimal, $this->base);
+            $div = bcdiv($decimal, $this->base, 0);
             $mod = bcmod($decimal, $this->base);
             $output .= $this->alphabet[$mod];
             $decimal = $div;
@@ -148,7 +148,7 @@ class BCMathService implements ServiceInterface
         while ($decimal > 0) {
             $byte = bcmod($decimal, 256);
             $output = pack('C', $byte) . $output;
-            $decimal = bcdiv($decimal, 256);
+            $decimal = bcdiv($decimal, 256, 0);
         }
 
         // Now we need to add leading zeros
