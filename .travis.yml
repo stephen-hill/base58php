@@ -16,3 +16,4 @@ php:
   - hhvm
 
 script: bin/phpunit
+
