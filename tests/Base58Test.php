@@ -1,10 +1,11 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
 use StephenHill\Base58;
 use StephenHill\BCMathService;
 use StephenHill\GMPService;
 
-class Base58Tests extends PHPUnit_Framework_TestCase
+class Base58Tests extends TestCase
 {
     /**
      * @dataProvider encodingsProvider

@@ -9,7 +9,6 @@
 	convertWarningsToExceptions="true"
 	processIsolation="true"
 	stopOnFailure="false"
-	syntaxCheck="true"
 	beStrictAboutTestsThatDoNotTestAnything="true"
 	beStrictAboutOutputDuringTests="true"
 	verbose="true"
