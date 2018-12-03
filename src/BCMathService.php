@@ -81,7 +81,7 @@ class BCMathService implements ServiceInterface
         $output = '';
         while ($decimal >= $this->base) {
             $div = bcdiv($decimal, $this->base, 0);
-            $mod = bcmod($decimal, $this->base);
+            $mod = (int) bcmod($decimal, $this->base);
             $output .= $this->alphabet[$mod];
             $decimal = $div;
         }
