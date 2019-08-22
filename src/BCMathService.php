@@ -81,7 +81,7 @@ class BCMathService implements ServiceInterface
         $output = '';
         while ($decimal >= $this->base) {
             $div = bcdiv($decimal, $this->base, 0);
-            $mod = bcmod($decimal, $this->base);
+            $mod = (int) bcmod($decimal, $this->base);
             $output .= $this->alphabet[$mod];
             $decimal = $div;
         }
@@ -146,7 +146,7 @@ class BCMathService implements ServiceInterface
         // Convert from base10 to base256 (8-bit byte array)
         $output = '';
         while ($decimal > 0) {
-            $byte = bcmod($decimal, 256);
+            $byte = (int) bcmod($decimal, 256);
             $output = pack('C', $byte) . $output;
             $decimal = bcdiv($decimal, 256, 0);
         }
