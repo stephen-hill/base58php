@@ -1,10 +1,12 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
 use StephenHill\Base58;
 use StephenHill\BCMathService;
 use StephenHill\GMPService;
+use StephenHill\PHPService;
 
-class Base58Tests extends PHPUnit_Framework_TestCase
+class Base58Tests extends TestCase
 {
     /**
      * @dataProvider encodingsProvider
@@ -32,7 +34,8 @@ class Base58Tests extends PHPUnit_Framework_TestCase
     {
         $instances = array(
             new Base58(null, new BCMathService()),
-            new Base58(null, new GMPService())
+            new Base58(null, new GMPService()),
+            new Base58(null, new PHPService()),
         );
 
         $tests = array(

@@ -57,7 +57,7 @@ class Base58
                 $service = new BCMathService($alphabet);
             }
             else {
-                throw new \Exception('Please install the BC Math or GMP extension.');
+                $service = new PHPService($alphabet);
             }
         }
 
