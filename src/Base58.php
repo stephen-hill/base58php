@@ -87,4 +87,29 @@ class Base58
     {
         return $this->service->decode($base58);
     }
+    
+    /**
+     * Return the current service provider.
+     * 
+     * @since v1.2.0
+     * @return ServiceInterface Return the current service.
+     */
+    public function getService()
+    {
+        return $this->service;
+    }
+    
+    /**
+     * Replaces the current service provider with a new one.
+     * 
+     * @param ServiceInterface $service The new service instance.
+     * @since v1.2.0
+     * @return self
+     */
+    public function replaceService(ServiceInterface $service)
+    {
+        $this->service = $service;
+        
+        return $this;
+    }
 }

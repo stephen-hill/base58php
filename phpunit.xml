@@ -22,9 +22,10 @@
 
 	<filter>
 		<whitelist addUncoveredFilesFromWhitelist="false">
-			<directory suffix=".php">src</directory>
+			<directory suffix=".php">.</directory>
 			<exclude>
 				<directory suffix=".php">vendor</directory>
+				<directory suffix=".php">tests</directory>
 			</exclude>
 		</whitelist>
 	</filter>
