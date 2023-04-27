@@ -70,6 +70,7 @@ class Base58
      * @param  string $string The string you wish to encode.
      * @since v1.0.0
      * @return string The Base58 encoded string.
+     * @throws \InvalidArgumentException
      */
     public function encode($string)
     {
@@ -82,6 +83,7 @@ class Base58
      * @param  string $base58 The base58 encoded string.
      * @since v1.0.0
      * @return string Returns the decoded string.
+     * @throws \InvalidArgumentException
      */
     public function decode($base58)
     {
