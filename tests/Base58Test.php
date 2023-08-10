@@ -3,8 +3,9 @@
 use StephenHill\Base58;
 use StephenHill\BCMathService;
 use StephenHill\GMPService;
+use PHPUnit\Framework\TestCase;
 
-class Base58Tests extends PHPUnit_Framework_TestCase
+class Base58Tests extends TestCase
 {
     /**
      * @dataProvider encodingsProvider
@@ -65,50 +66,45 @@ class Base58Tests extends PHPUnit_Framework_TestCase
         return $return;
     }
 
-    /**
-     * @expectedException        InvalidArgumentException
-     * @expectedExceptionMessage Argument $alphabet must be a string.
-     */
     public function testConstructorTypeException()
     {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Argument $alphabet must be a string.');
+
         new Base58(intval(123));
     }
 
-    /**
-     * @expectedException        InvalidArgumentException
-     * @expectedExceptionMessage Argument $alphabet must contain 58 characters.
-     */
     public function testConstructorLengthException()
     {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Argument $alphabet must contain 58 characters.');
+
         new Base58('');
     }
 
-    /**
-     * @expectedException        InvalidArgumentException
-     * @expectedExceptionMessage Argument $string must be a string.
-     */
     public function testEncodeTypeException()
     {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Argument $string must be a string.');
+
         $base58 = new Base58();
         $base58->encode(intval(123));
     }
 
-    /**
-     * @expectedException        InvalidArgumentException
-     * @expectedExceptionMessage Argument $base58 must be a string.
-     */
     public function testDecodeTypeException()
     {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Argument $base58 must be a string.');
+
         $base58 = new Base58();
         $base58->decode(intval(123));
     }
 
-    /**
-     * @expectedException        InvalidArgumentException
-     * @expectedExceptionMessage Argument $base58 contains invalid characters.
-     */
     public function testInvalidBase58()
     {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Argument $base58 contains invalid characters.');
+
         $base58 = new Base58();
         $base58->decode("This isn't valid base58");
     }
