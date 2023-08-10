@@ -10,6 +10,7 @@ interface ServiceInterface
      * @param  string $string The string you wish to encode.
      * @since v1.1.0
      * @return string The Base58 encoded string.
+     * @throws \InvalidArgumentException
      */
     public function encode($string);
 
@@ -19,6 +20,7 @@ interface ServiceInterface
      * @param  string $base58 The base58 encoded string.
      * @since v1.1.0
      * @return string Returns the decoded string.
+     * @throws \InvalidArgumentException
      */
     public function decode($base58);
 }
