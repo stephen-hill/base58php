@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 use StephenHill\Base58;
 use StephenHill\BCMathService;
@@ -67,12 +68,12 @@ class Base58Test extends TestCase
     }
 
     /**
-     * @expectedException        InvalidArgumentException
+     * @expectedException        TypeError
      * @expectedExceptionMessage Argument $alphabet must be a string.
      */
     public function testConstructorTypeException()
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(\TypeError::class);
         new Base58(intval(123));
 
     }
@@ -88,21 +89,23 @@ class Base58Test extends TestCase
     }
 
     /**
-     * @expectedException        InvalidArgumentException
+     * @expectedException        TypeError
      * @expectedExceptionMessage Argument $string must be a string.
      */
     public function testEncodeTypeException()
     {
+        $this->expectException(\TypeError::class);
         $base58 = new Base58();
         $base58->encode(intval(123));
     }
 
     /**
-     * @expectedException        InvalidArgumentException
+     * @expectedException        TypeError
      * @expectedExceptionMessage Argument $base58 must be a string.
      */
     public function testDecodeTypeException()
     {
+        $this->expectException(\TypeError::class);
         $base58 = new Base58();
         $base58->decode(intval(123));
     }
