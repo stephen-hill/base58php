@@ -79,54 +79,6 @@ $base58->encode('Hello World');
 $base58->decode('iXf12sRWto45bmC');
 ```
 
-## Testing
-
-This library is tested using PHPUnit.
-
-```bash
-$ bin/phpunit
-```
-
-## Benchmarking
-
-You can benchmark this library using [Athletic](https://github.com/polyfractal/athletic).
-The benchmarking suite also benchmarks PHP's built-in Base64 and Base16 encoding for comparison.
-
-```bash
-$ bin/athletic -p benchmarks
-```
-
-Example output.
-
-```
-StephenHill\Benchmarks\Base16Event
-    Method Name    Iterations    Average Time      Ops/second
-    ------------  ------------  --------------    -------------
-    encodeBase16: [10,000    ] [0.0000010839939] [922,514.40637]
-    decodeBase16: [10,000    ] [0.0000011516809] [868,296.03561]
-
-
-StephenHill\Benchmarks\Base58BCMathEvent
-    Method Name    Iterations    Average Time      Ops/second
-    ------------  ------------  --------------    -------------
-    encodeBase58: [10,000    ] [0.0001500048161] [6,666.45263]
-    decodeBase58: [10,000    ] [0.0001741812706] [5,741.14540]
-
-
-StephenHill\Benchmarks\Base58GMPEvent
-    Method Name    Iterations    Average Time      Ops/second
-    ------------  ------------  --------------    -------------
-    encodeBase58: [10,000    ] [0.0001168665648] [8,556.76730]
-    decodeBase58: [10,000    ] [0.0001385705233] [7,216.54199]
-
-
-StephenHill\Benchmarks\Base64Event
-    Method Name    Iterations    Average Time      Ops/second
-    ------------  ------------  --------------    -------------
-    encodeBase64: [10,000    ] [0.0000009050369] [1,104,927.29189]
-    decodeBase64: [10,000    ] [0.0000009787321] [1,021,730.04312]
-```
-
 ## Contributing
 
 I welcome everyone to contribute to this library. Please see the Contributing document for details.
@@ -137,7 +89,7 @@ This library is license under the MIT License (MIT). Please see License File for
 
 ## Credits
 
-This library was forked from [Jeremy Johnstone's](https://github.com/jsjohnst) Base58 methods on Gist https://gist.github.com/jsjohnst/126883.
+This library was forked from [Stephen Hill's](https://github.com/stephen-hill) Base58 methods on Github https://github.com/stephen-hill/base58php.
 
 Some of the unit tests were based on the following:
 
