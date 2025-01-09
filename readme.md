@@ -26,7 +26,7 @@ So I decided to create a library with the following goals:
 
 This library has the following requirements:
 
-- PHP => 5.3
+- PHP => 8.3
 - BC Math Extension
 
 ## Installation
@@ -36,7 +36,7 @@ I recommend you install this library via Composer.
 ```json
 {
     "require": {
-        "stephenhill/base58": "~1.0"
+        "vandalorumrex/base58": "~1.0"
     }
 }
 ```

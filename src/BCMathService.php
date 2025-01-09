@@ -10,13 +10,13 @@ class BCMathService implements ServiceInterface
      * @var string
      * @since v1.1.0
      */
-    protected $alphabet;
+    protected string $alphabet;
 
     /**
      * @var int
      * @since v1.1.0
      */
-    protected $base;
+    protected int $base;
 
     /**
      * Constructor
@@ -24,7 +24,7 @@ class BCMathService implements ServiceInterface
      * @param string $alphabet optional
      * @since v1.1.0
      */
-    public function __construct($alphabet = null)
+    public function __construct(?string $alphabet = null)
     {
         // Handle null alphabet
         if (is_null($alphabet) === true) {
