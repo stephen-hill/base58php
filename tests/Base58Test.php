@@ -3,8 +3,9 @@
 use StephenHill\Base58;
 use StephenHill\BCMathService;
 use StephenHill\GMPService;
+use PHPUnit\Framework\TestCase;
 
-class Base58Tests extends PHPUnit_Framework_TestCase
+class Base58Test extends TestCase
 {
     /**
      * @dataProvider encodingsProvider
@@ -71,7 +72,9 @@ class Base58Tests extends PHPUnit_Framework_TestCase
      */
     public function testConstructorTypeException()
     {
+        $this->expectException(\InvalidArgumentException::class);
         new Base58(intval(123));
+
     }
 
     /**
@@ -80,6 +83,7 @@ class Base58Tests extends PHPUnit_Framework_TestCase
      */
     public function testConstructorLengthException()
     {
+        $this->expectException(\InvalidArgumentException::class);
         new Base58('');
     }
 
@@ -109,6 +113,7 @@ class Base58Tests extends PHPUnit_Framework_TestCase
      */
     public function testInvalidBase58()
     {
+        $this->expectException(\InvalidArgumentException::class);
         $base58 = new Base58();
         $base58->decode("This isn't valid base58");
     }
