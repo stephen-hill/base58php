@@ -51,7 +51,7 @@ class BCMathService implements ServiceInterface
      * @since Release v1.1.0
      * @return string The Base58 encoded string.
      */
-    public function encode($string)
+    public function encode(string $string): string
     {
         // Type validation
         if (is_string($string) === false) {
@@ -113,7 +113,7 @@ class BCMathService implements ServiceInterface
      * @since Release v1.1.0
      * @return string Returns the decoded string.
      */
-    public function decode($base58)
+    public function decode(string $base58): string
     {
         // Type Validation
         if (is_string($base58) === false) {
