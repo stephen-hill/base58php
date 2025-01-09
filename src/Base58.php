@@ -71,7 +71,7 @@ class Base58
      * @since v1.0.0
      * @return string The Base58 encoded string.
      */
-    public function encode($string)
+    public function encode(string $string): string
     {
         return $this->service->encode($string);
     }
@@ -83,7 +83,7 @@ class Base58
      * @since v1.0.0
      * @return string Returns the decoded string.
      */
-    public function decode($base58)
+    public function decode(string $base58): string
     {
         return $this->service->decode($base58);
     }
