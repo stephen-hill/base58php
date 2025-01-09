@@ -1,7 +1,7 @@
 # Base58 Encoding and Decoding Library for PHP
 
 [![Build Status](https://travis-ci.org/stephen-hill/base58php.png)](https://travis-ci.org/stephen-hill/base58php)
-[![Packagist Release](http://img.shields.io/packagist/v/stephenhill/base58.svg)](https://packagist.org/packages/vandalorumrex/base58)
+[![Packagist Release](https://github.com/VandalorumRex/base58php/blob/master/version.svg)](https://packagist.org/packages/vandalorumrex/base58)
 [![MIT License](http://img.shields.io/packagist/l/stephenhill/base58.svg)](https://github.com/stephen-hill/base58php/blob/master/license)
 [![Flattr this](https://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=stephen-hill&url=https%3A%2F%2Fgithub.com%2Fstephen-hill%2Fbase58php)
 
