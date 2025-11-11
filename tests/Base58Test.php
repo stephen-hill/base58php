@@ -3,58 +3,49 @@
 use StephenHill\Base58;
 use StephenHill\BCMathService;
 use StephenHill\GMPService;
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 
-class Base58Tests extends PHPUnit_Framework_TestCase
+class Base58Test extends TestCase
 {
-    /**
-     * @dataProvider encodingsProvider
-     */
-    public function testEncode($string, $encoded, $instance)
+    #[DataProvider('encodingsProvider')]
+    public function testEncode(string $string, string $encoded, Base58 $instance): void
     {
-        $string = (string) $string;
-        $encoded = (string) $encoded;
-
         $this->assertSame($encoded, $instance->encode($string));
     }
 
-    /**
-     * @dataProvider encodingsProvider
-     */
-    public function testDecode($string, $encoded, $instance)
+    #[DataProvider('encodingsProvider')]
+    public function testDecode(string $string, string $encoded, Base58 $instance): void
     {
-        $string = (string) $string;
-        $encoded = (string) $encoded;
-
         $this->assertSame($string, $instance->decode($encoded));
     }
 
-    public function encodingsProvider()
+    public static function encodingsProvider(): array
     {
-        $instances = array(
+        $instances = [
             new Base58(null, new BCMathService()),
-            new Base58(null, new GMPService())
-        );
+            new Base58(null, new GMPService()),
+        ];
 
-        $tests = array(
-            array('', ''),
-            array('1', 'r'),
-            array('a', '2g'),
-            array('bbb', 'a3gV'),
-            array('ccc', 'aPEr'),
-            array('hello!', 'tzCkV5Di'),
-            array('Hello World', 'JxF12TrwUP45BMd'),
-            array('this is a test', 'jo91waLQA1NNeBmZKUF'),
-            array('the quick brown fox', 'NK2qR8Vz63NeeAJp9XRifbwahu'),
-            array('THE QUICK BROWN FOX', 'GRvKwF9B69ssT67JgRWxPQTZ2X'),
-            array('simply a long string', '2cFupjhnEsSn59qHXstmK2ffpLv2'),
-            array("\x00\x61", '12g'),
-            array("\x00", '1'),
-            array("\x00\x00", '11'),
-            array('0248ac9d3652ccd8350412b83cb08509e7e4bd41', '3PtvAWwSMPe2DohNuCFYy76JhMV3rhxiSxQMbPBTtiPvYvneWu95XaY')
-        );
+        $tests = [
+            ['', ''],
+            ['1', 'r'],
+            ['a', '2g'],
+            ['bbb', 'a3gV'],
+            ['ccc', 'aPEr'],
+            ['hello!', 'tzCkV5Di'],
+            ['Hello World', 'JxF12TrwUP45BMd'],
+            ['this is a test', 'jo91waLQA1NNeBmZKUF'],
+            ['the quick brown fox', 'NK2qR8Vz63NeeAJp9XRifbwahu'],
+            ['THE QUICK BROWN FOX', 'GRvKwF9B69ssT67JgRWxPQTZ2X'],
+            ['simply a long string', '2cFupjhnEsSn59qHXstmK2ffpLv2'],
+            ["\x00\x61", '12g'],
+            ["\x00", '1'],
+            ["\x00\x00", '11'],
+            ['0248ac9d3652ccd8350412b83cb08509e7e4bd41', '3PtvAWwSMPe2DohNuCFYy76JhMV3rhxiSxQMbPBTtiPvYvneWu95XaY'],
+        ];
 
-        $return = array();
-
+        $return = [];
         foreach ($instances as $instance) {
             foreach ($tests as $test) {
                 $test[] = $instance;
@@ -65,50 +56,19 @@ class Base58Tests extends PHPUnit_Framework_TestCase
         return $return;
     }
 
-    /**
-     * @expectedException        InvalidArgumentException
-     * @expectedExceptionMessage Argument $alphabet must be a string.
-     */
-    public function testConstructorTypeException()
+    public function testConstructorLengthException(): void
     {
-        new Base58(intval(123));
-    }
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Argument $alphabet must contain 58 characters.');
 
-    /**
-     * @expectedException        InvalidArgumentException
-     * @expectedExceptionMessage Argument $alphabet must contain 58 characters.
-     */
-    public function testConstructorLengthException()
-    {
         new Base58('');
     }
 
-    /**
-     * @expectedException        InvalidArgumentException
-     * @expectedExceptionMessage Argument $string must be a string.
-     */
-    public function testEncodeTypeException()
+    public function testInvalidBase58(): void
     {
-        $base58 = new Base58();
-        $base58->encode(intval(123));
-    }
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Argument $base58 contains invalid characters.');
 
-    /**
-     * @expectedException        InvalidArgumentException
-     * @expectedExceptionMessage Argument $base58 must be a string.
-     */
-    public function testDecodeTypeException()
-    {
-        $base58 = new Base58();
-        $base58->decode(intval(123));
-    }
-
-    /**
-     * @expectedException        InvalidArgumentException
-     * @expectedExceptionMessage Argument $base58 contains invalid characters.
-     */
-    public function testInvalidBase58()
-    {
         $base58 = new Base58();
         $base58->decode("This isn't valid base58");
     }

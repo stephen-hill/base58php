@@ -1,15 +1,15 @@
 # Base58 Encoding and Decoding Library for PHP
 
-[![Build Status](https://travis-ci.org/stephen-hill/base58php.png)](https://travis-ci.org/stephen-hill/base58php)
 [![Packagist Release](http://img.shields.io/packagist/v/stephenhill/base58.svg)](https://packagist.org/packages/stephenhill/base58)
 [![MIT License](http://img.shields.io/packagist/l/stephenhill/base58.svg)](https://github.com/stephen-hill/base58php/blob/master/license)
-[![Flattr this](https://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=stephen-hill&url=https%3A%2F%2Fgithub.com%2Fstephen-hill%2Fbase58php)
+[![Action Status](https://github.com/stephen-hill/base58php/actions/workflows/php.yml/badge.svg)](https://github.com/stephen-hill/base58php/actions/workflows/php.yml)
 
 ## Long Term Support
 
 Each major version of this library will be supported for 5 years after it's initial release. Support will be provided for security and bug fixes.
 
-Version 1 will therefore be supported until the 11th September 2019.
+- Version 2 will be supported until the 1st Janurary 2031.
+- Version 1 support expired on the 11th September 2019.
 
 ## Background
 
@@ -26,8 +26,8 @@ So I decided to create a library with the following goals:
 
 This library has the following requirements:
 
-- PHP => 5.3
-- BC Math Extension
+- PHP => 8.1
+- GMP or BC Math Extension
 
 ## Installation
 
@@ -36,7 +36,7 @@ I recommend you install this library via Composer.
 ```json
 {
     "require": {
-        "stephenhill/base58": "~1.0"
+        "stephenhill/base58": "~2.0"
     }
 }
 ```
@@ -87,46 +87,6 @@ This library is tested using PHPUnit.
 $ bin/phpunit
 ```
 
-## Benchmarking
-
-You can benchmark this library using [Athletic](https://github.com/polyfractal/athletic).
-The benchmarking suite also benchmarks PHP's built-in Base64 and Base16 encoding for comparison.
-
-```bash
-$ bin/athletic -p benchmarks
-```
-
-Example output.
-
-```
-StephenHill\Benchmarks\Base16Event
-    Method Name    Iterations    Average Time      Ops/second
-    ------------  ------------  --------------    -------------
-    encodeBase16: [10,000    ] [0.0000010839939] [922,514.40637]
-    decodeBase16: [10,000    ] [0.0000011516809] [868,296.03561]
-
-
-StephenHill\Benchmarks\Base58BCMathEvent
-    Method Name    Iterations    Average Time      Ops/second
-    ------------  ------------  --------------    -------------
-    encodeBase58: [10,000    ] [0.0001500048161] [6,666.45263]
-    decodeBase58: [10,000    ] [0.0001741812706] [5,741.14540]
-
-
-StephenHill\Benchmarks\Base58GMPEvent
-    Method Name    Iterations    Average Time      Ops/second
-    ------------  ------------  --------------    -------------
-    encodeBase58: [10,000    ] [0.0001168665648] [8,556.76730]
-    decodeBase58: [10,000    ] [0.0001385705233] [7,216.54199]
-
-
-StephenHill\Benchmarks\Base64Event
-    Method Name    Iterations    Average Time      Ops/second
-    ------------  ------------  --------------    -------------
-    encodeBase64: [10,000    ] [0.0000009050369] [1,104,927.29189]
-    decodeBase64: [10,000    ] [0.0000009787321] [1,021,730.04312]
-```
-
 ## Contributing
 
 I welcome everyone to contribute to this library. Please see the Contributing document for details.
@@ -143,3 +103,5 @@ Some of the unit tests were based on the following:
 
 - https://code.google.com/p/bitcoinj/source/browse/core/src/test/java/com/google/bitcoin/core/Base58Test.java
 - https://github.com/bitcoinjs/bitcoinjs-lib/blob/master/test/fixtures/base58.json
+
+In no particular order, I would like to thank the following for pushing me to release a PHP 8 compatible version: @git-marijus, @VandalorumRex, @bacheson, @kalifg

@@ -29,17 +29,12 @@ class Base58
      * @since v1.1.0 Added the optional $service argument.
      */
     public function __construct(
-        $alphabet = null,
-        ServiceInterface $service = null
+        ?string $alphabet = null,
+        ?ServiceInterface $service = null
     ) {
         // Handle null alphabet
         if (is_null($alphabet) === true) {
             $alphabet = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
-        }
-
-        // Type validation
-        if (is_string($alphabet) === false) {
-            throw new InvalidArgumentException('Argument $alphabet must be a string.');
         }
 
         // The alphabet must contain 58 characters
@@ -71,7 +66,7 @@ class Base58
      * @since v1.0.0
      * @return string The Base58 encoded string.
      */
-    public function encode($string)
+    public function encode(string $string) : string
     {
         return $this->service->encode($string);
     }
@@ -83,7 +78,7 @@ class Base58
      * @since v1.0.0
      * @return string Returns the decoded string.
      */
-    public function decode($base58)
+    public function decode(string $base58) : string
     {
         return $this->service->decode($base58);
     }
