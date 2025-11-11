@@ -1,4 +1,4 @@
-name: PHP CI
+name: Base58
 
 on:
   push:
