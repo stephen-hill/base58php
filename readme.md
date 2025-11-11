@@ -2,6 +2,7 @@
 
 [![Packagist Release](http://img.shields.io/packagist/v/stephenhill/base58.svg)](https://packagist.org/packages/stephenhill/base58)
 [![MIT License](http://img.shields.io/packagist/l/stephenhill/base58.svg)](https://github.com/stephen-hill/base58php/blob/master/license)
+[![Action Status](https://github.com/stephen-hill/base58php/actions/workflows/php.yml/badge.svg)](https://github.com/stephen-hill/base58php/actions/workflows/php.yml)
 
 ## Long Term Support
 
