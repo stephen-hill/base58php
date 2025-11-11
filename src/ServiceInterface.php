@@ -11,7 +11,7 @@ interface ServiceInterface
      * @since v1.1.0
      * @return string The Base58 encoded string.
      */
-    public function encode($string);
+    public function encode(string $string) : string;
 
     /**
      * Decode base58 into a PHP string.
@@ -20,5 +20,5 @@ interface ServiceInterface
      * @since v1.1.0
      * @return string Returns the decoded string.
      */
-    public function decode($base58);
+    public function decode(string $base58) : string;
 }

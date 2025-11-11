@@ -56,14 +56,6 @@ class Base58Test extends TestCase
         return $return;
     }
 
-    public function testConstructorTypeException(): void
-    {
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage('Argument $alphabet must be a string.');
-
-        new Base58(intval(123));
-    }
-
     public function testConstructorLengthException(): void
     {
         $this->expectException(\InvalidArgumentException::class);
