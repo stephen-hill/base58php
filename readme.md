@@ -27,7 +27,7 @@ So I decided to create a library with the following goals:
 This library has the following requirements:
 
 - PHP => 8.1
-- BC Math Extension
+- GMP or BC Math Extension
 
 ## Installation
 
