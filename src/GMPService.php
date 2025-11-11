@@ -31,11 +31,6 @@ class GMPService implements ServiceInterface
             $alphabet = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
         }
 
-        // Type validation
-        if (is_string($alphabet) === false) {
-            throw new InvalidArgumentException('Argument $alphabet must be a string.');
-        }
-
         // The alphabet must contain 58 characters
         if (strlen($alphabet) !== 58) {
             throw new InvalidArgumentException('Argument $alphabet must contain 58 characters.');
@@ -53,11 +48,6 @@ class GMPService implements ServiceInterface
      */
     public function encode(string $string) : string
     {
-        // Type validation
-        if (is_string($string) === false) {
-            throw new InvalidArgumentException('Argument $string must be a string.');
-        }
-
         // If the string is empty, then the encoded string is obviously empty
         if (strlen($string) === 0) {
             return '';
@@ -107,11 +97,6 @@ class GMPService implements ServiceInterface
      */
     public function decode(string $base58) : string
     {
-        // Type Validation
-        if (is_string($base58) === false) {
-            throw new InvalidArgumentException('Argument $base58 must be a string.');
-        }
-
         // If the string is empty, then the decoded string is obviously empty
         if (strlen($base58) === 0) {
             return '';
