@@ -102,3 +102,5 @@ Some of the unit tests were based on the following:
 
 - https://code.google.com/p/bitcoinj/source/browse/core/src/test/java/com/google/bitcoin/core/Base58Test.java
 - https://github.com/bitcoinjs/bitcoinjs-lib/blob/master/test/fixtures/base58.json
+
+In no particular order, I would like to thank the following for pushing me to release a PHP 8 compatible version: @git-marijus, @VandalorumRex, @bacheson, @kalifg
